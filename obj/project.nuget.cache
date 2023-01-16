@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "uodqtfw3D7RHCCFh4h4sTwjLS4CjUnqOiWr6YO6/KakSFPsieimcBHVdW2PjPzT6kh+zAGeJBizC/nSar+knzA==",
+  "dgSpecHash": "j0iMQq+gd9E2oGemWvjLICBRLs2N+N/IvDxFl/aXS7sRUF4y02BL6WDJSj4TBnG8xfEO3PjLcnvp/Dnyc3Sujg==",
   "success": true,
   "projectFilePath": "D:\\ReactWebApi\\Api\\api.csproj",
   "expectedPackageFiles": [
@@ -26,6 +26,7 @@
     "C:\\Users\\Z003UVTD\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
     "C:\\Users\\Z003UVTD\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
     "C:\\Users\\Z003UVTD\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512",
+    "C:\\Users\\Z003UVTD\\.nuget\\packages\\minivalidation\\0.7.2\\minivalidation.0.7.2.nupkg.sha512",
     "C:\\Users\\Z003UVTD\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.1.2\\sqlitepclraw.bundle_e_sqlite3.2.1.2.nupkg.sha512",
     "C:\\Users\\Z003UVTD\\.nuget\\packages\\sqlitepclraw.core\\2.1.2\\sqlitepclraw.core.2.1.2.nupkg.sha512",
     "C:\\Users\\Z003UVTD\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.1.2\\sqlitepclraw.lib.e_sqlite3.2.1.2.nupkg.sha512",

@@ -5,6 +5,10 @@ public interface IHouseRepository
     Task<List<HouseDto>> GetAll();
 
     Task<HouseDetailDto?> Get(int id);
+
+    Task<HouseDetailDto> Add(HouseDetailDto house);
+    Task<HouseDetailDto> Update(HouseDetailDto house);
+    Task Delete(int id);
 }
 
 public class HouseRepository : IHouseRepository
@@ -14,6 +18,20 @@ public class HouseRepository : IHouseRepository
     public HouseRepository(HouseDbContext context)
     {
         this.context = context;
+    }
+
+        private static HouseDetailDto EntityToDetailDto(HouseEntity e)
+    {
+        return new HouseDetailDto(e.Id, e.Address, e.Country, e.Description, e.Price, e.Photo);
+    }
+
+        private static void DtoToEntity(HouseDetailDto dto, HouseEntity e)
+    {
+        e.Address = dto.Address;
+        e.Country = dto.Country;
+        e.Description = dto.Description;
+        e.Price = dto.Price;
+        e.Photo = dto.Photo;
     }
 
     public async Task<List<HouseDto>> GetAll()
@@ -27,6 +45,35 @@ public class HouseRepository : IHouseRepository
         if(e==null)
             return null;
 
-        return new HouseDetailDto(e.Id, e.Address, e.Country, e.Price, e.Description, e.Photo);
+        return new HouseDetailDto(e.Id, e.Address, e.Country, e.Description, e.Price, e.Photo);
+    }
+
+        public async Task<HouseDetailDto> Add(HouseDetailDto dto)
+    {
+        var entity = new HouseEntity();
+        DtoToEntity(dto, entity);
+        context.Houses.Add(entity);
+        await context.SaveChangesAsync();
+        return EntityToDetailDto(entity);
+    }
+
+    public async Task<HouseDetailDto> Update(HouseDetailDto dto)
+    {
+        var entity = await context.Houses.FindAsync(dto.Id);
+        if (entity == null)
+            throw new ArgumentException($"Trying to update house: entity with ID {dto.Id} not found.");
+        DtoToEntity(dto, entity);
+        context.Entry(entity).State = EntityState.Modified;
+        await context.SaveChangesAsync();
+        return EntityToDetailDto(entity);
+    }
+
+    public async Task Delete(int id)
+    {
+        var entity = await context.Houses.FindAsync(id);
+        if (entity == null)
+            throw new ArgumentException($"Trying to delete house: entity with ID {id} not found.");
+        context.Houses.Remove(entity);
+        await context.SaveChangesAsync();
     }
 }

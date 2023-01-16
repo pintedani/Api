@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Mvc;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -8,6 +10,7 @@ builder.Services.AddCors();
 builder.Services.AddDbContext<HouseDbContext>(o=>
     o.UseQueryTrackingBehavior(Microsoft.EntityFrameworkCore.QueryTrackingBehavior.NoTracking));
 builder.Services.AddScoped<IHouseRepository,HouseRepository>();
+builder.Services.AddScoped<IBidRepository,BidRepository>();
 
 
 var app = builder.Build();
@@ -24,16 +27,7 @@ app.UseCors(p=>p.WithOrigins("http://localhost:3000")
 
 app.UseHttpsRedirection();
 
-app.MapGet("/houses", (IHouseRepository houseRepository) =>
-    houseRepository.GetAll()).Produces<HouseDto[]>(StatusCodes.Status200OK);
-app.MapGet("/house/{houseId:int}", async (int houseId, IHouseRepository repo)=>{
-    var house = await repo.Get(houseId);
-    if(house == null){
-        return Results.Problem($"House with ID {houseId} not found.",
-            statusCode: 404);
-    }
-
-    return Results.Ok(house);
-}).ProducesProblem(404).Produces<HouseDetailDto>(StatusCodes.Status200OK);
+app.MapHouseEndpoints();
+app.MapBidEndpoints();
 
 app.Run();

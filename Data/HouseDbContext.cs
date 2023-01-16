@@ -8,12 +8,14 @@ public class HouseDbContext : DbContext{
     }
     public DbSet<HouseEntity> Houses => Set<HouseEntity>();
 
+    public DbSet<BidEntity> Bids => Set<BidEntity>();
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         var folder = Environment.SpecialFolder.LocalApplicationData;
         var path = Environment.GetFolderPath(folder);
 
-        optionsBuilder.UseSqlite($"Data Source={Path.Join(path,"houses.db")}");
+        optionsBuilder.UseSqlite($"Data Source={Path.Join(path,"houses3.db")}");
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder){
