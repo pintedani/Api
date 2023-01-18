@@ -65,3 +65,4 @@ D:\ReactWebApi\Api\bin\Debug\net7.0\runtimes\win-arm64\native\e_sqlite3.dll
 D:\ReactWebApi\Api\bin\Debug\net7.0\runtimes\win-x64\native\e_sqlite3.dll
 D:\ReactWebApi\Api\bin\Debug\net7.0\runtimes\win-x86\native\e_sqlite3.dll
 D:\ReactWebApi\Api\bin\Debug\net7.0\MiniValidation.dll
+D:\ReactWebApi\api\bin\Debug\net7.0\api.staticwebassets.runtime.json
